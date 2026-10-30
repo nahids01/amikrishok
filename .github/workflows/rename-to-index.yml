@@ -1,0 +1,17 @@
+name: Rename amikrishok.html to index.html
+on:
+  workflow_dispatch:
+jobs:
+  rename:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rename file to index.html
+        run: |
+          git mv amikrishok.html index.html
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "Rename amikrishok.html to index.html"
+          git push
